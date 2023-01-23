@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html>
+<html style="height: 100px; width: 100px">
+
 <head>
   <!--
     If you are serving your web app in a path other than the root, change the
@@ -27,9 +28,9 @@
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
+  <link rel="icon" type="image/png" href="favicon.png" />
 
-  <title>chrome_extension_demo</title>
+  <title>拡張機能テスト</title>
   <link rel="manifest" href="manifest.json">
 
   <script>
@@ -38,21 +39,17 @@
   </script>
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
+  <style>
+    /* bodyの背景を透明に */
+    body {
+      background-color: transparent;
+    }
+  </style>
 </head>
+
 <body>
-  <script>
-    window.addEventListener('load', function(ev) {
-      // Download main.dart.js
-      _flutter.loader.loadEntrypoint({
-        serviceWorker: {
-          serviceWorkerVersion: serviceWorkerVersion,
-        }
-      }).then(function(engineInitializer) {
-        return engineInitializer.initializeEngine();
-      }).then(function(appRunner) {
-        return appRunner.runApp();
-      });
-    });
+  <script type="application/javascript" src="main.dart.js">
   </script>
 </body>
+
 </html>
