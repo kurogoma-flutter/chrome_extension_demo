@@ -1,6 +1,6 @@
 {
-    "name": "拡張機能テスト",
-    "description": "拡張機能テスト",
+    "name": "Yoriai",
+    "description": "Yoriai",
     "version": "1.0.0",
     "content_security_policy": {
         "extension_pages": "script-src 'self' ; object-src 'self'"
