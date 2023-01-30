@@ -1,53 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+import 'application.dart';
+import 'initialize.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({
-    super.key,
-  });
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 6, 147, 255),
-      body: SizedBox(
-        width: MediaQuery.of(context).size.width,
-        child: ListView.builder(
-          itemCount: 20,
-          itemBuilder: (context, index) {
-            return Card(
-              child: ListTile(
-                title: Text('サンプルタイトル $index'),
-                subtitle: Text('subtitle $index'),
-              ),
-            );
-          },
-        ),
-      ),
-    );
-  }
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  // アプリ実行前の初期化処理
+  await Initialize().init();
+  // アプリ実行
+  runApp(const ProviderScope(child: Application()));
 }
