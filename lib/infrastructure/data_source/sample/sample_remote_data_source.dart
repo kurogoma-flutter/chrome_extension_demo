@@ -6,7 +6,7 @@ import '../../model/sample/sample_model.dart';
 class SampleDataSource {
   /// 3秒遅延させて、ダミーのデータを返す
   Future<List<SampleModel>> fetchSampleModelList() async {
-    await Future.delayed(const Duration(seconds: 3));
+    await Future.delayed(const Duration(milliseconds: 500));
     return [
       const SampleModel(
         id: '1',

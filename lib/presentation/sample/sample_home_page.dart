@@ -1,3 +1,4 @@
+import 'package:chrome_extension_demo/script/current_path.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -24,6 +25,11 @@ class SampleHomePage extends HookConsumerWidget {
 
     // Widget Style
 
+    Future<String> fetchPath() async {
+      final url = await fetchCurrentPathFuture;
+      return url;
+    }
+
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 50, 50, 50),
       appBar: AppBar(
@@ -42,82 +48,29 @@ class SampleHomePage extends HookConsumerWidget {
             )
           : ListView(
               children: [
-                Card(
-                  child: ListTile(
-                    title: Row(
-                      children: const [
-                        Icon(Icons.paid_rounded),
-                        Text('ラベル1'),
-                      ],
-                    ),
-                    subtitle: const Text('detail explain sample'),
-                  ),
-                ),
-                Card(
-                  child: ListTile(
-                    title: Row(
-                      children: const [
-                        Icon(Icons.paid_rounded),
-                        Text('ラベル1'),
-                      ],
-                    ),
-                    subtitle: const Text('detail explain sample'),
-                  ),
-                ),
-                Card(
-                  child: ListTile(
-                    title: Row(
-                      children: const [
-                        Icon(Icons.paid_rounded),
-                        Text('ラベル1'),
-                      ],
-                    ),
-                    subtitle: const Text('detail explain sample'),
-                  ),
-                ),
-                Card(
-                  child: ListTile(
-                    title: Row(
-                      children: const [
-                        Icon(Icons.paid_rounded),
-                        Text('ラベル1'),
-                      ],
-                    ),
-                    subtitle: const Text('detail explain sample'),
-                  ),
-                ),
-                Card(
-                  child: ListTile(
-                    title: Row(
-                      children: const [
-                        Icon(Icons.paid_rounded),
-                        Text('ラベル1'),
-                      ],
-                    ),
-                    subtitle: const Text('detail explain sample'),
-                  ),
-                ),
-                Card(
-                  child: ListTile(
-                    title: Row(
-                      children: const [
-                        Icon(Icons.paid_rounded),
-                        Text('ラベル1'),
-                      ],
-                    ),
-                    subtitle: const Text('detail explain sample'),
-                  ),
-                ),
-                Card(
-                  child: ListTile(
-                    title: Row(
-                      children: const [
-                        Icon(Icons.paid_rounded),
-                        Text('ラベル1'),
-                      ],
-                    ),
-                    subtitle: const Text('detail explain sample'),
-                  ),
+                FutureBuilder(
+                  builder: ((context, snapshot) {
+                    if (snapshot.hasData) {
+                      return Card(
+                        child: ListTile(
+                          title: Row(
+                            children: const [
+                              Icon(Icons.paid_rounded),
+                              Text('URLラベル'),
+                            ],
+                          ),
+                          subtitle: Text(
+                            snapshot.data ?? 'detail explain sample',
+                          ),
+                        ),
+                      );
+                    } else {
+                      return const Center(
+                        child: Text('loading...'),
+                      );
+                    }
+                  }),
+                  future: fetchPath(),
                 ),
                 Card(
                   child: ListTile(
