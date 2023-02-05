@@ -20,7 +20,8 @@ mixin _$TopInfoState {
   List<SampleModel> get topInfoItemList =>
       throw _privateConstructorUsedError; // こちらの場合、state.futureTopInfoList.when~が使える
   AsyncValue<List<SampleModel>> get futureTopInfoItemList =>
-      throw _privateConstructorUsedError;
+      throw _privateConstructorUsedError; // URLを取得
+  AsyncValue<String> get url => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TopInfoStateCopyWith<TopInfoState> get copyWith =>
@@ -35,7 +36,8 @@ abstract class $TopInfoStateCopyWith<$Res> {
   @useResult
   $Res call(
       {List<SampleModel> topInfoItemList,
-      AsyncValue<List<SampleModel>> futureTopInfoItemList});
+      AsyncValue<List<SampleModel>> futureTopInfoItemList,
+      AsyncValue<String> url});
 }
 
 /// @nodoc
@@ -53,6 +55,7 @@ class _$TopInfoStateCopyWithImpl<$Res, $Val extends TopInfoState>
   $Res call({
     Object? topInfoItemList = null,
     Object? futureTopInfoItemList = null,
+    Object? url = null,
   }) {
     return _then(_value.copyWith(
       topInfoItemList: null == topInfoItemList
@@ -63,6 +66,10 @@ class _$TopInfoStateCopyWithImpl<$Res, $Val extends TopInfoState>
           ? _value.futureTopInfoItemList
           : futureTopInfoItemList // ignore: cast_nullable_to_non_nullable
               as AsyncValue<List<SampleModel>>,
+      url: null == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as AsyncValue<String>,
     ) as $Val);
   }
 }
@@ -77,7 +84,8 @@ abstract class _$$_TopInfoStateCopyWith<$Res>
   @useResult
   $Res call(
       {List<SampleModel> topInfoItemList,
-      AsyncValue<List<SampleModel>> futureTopInfoItemList});
+      AsyncValue<List<SampleModel>> futureTopInfoItemList,
+      AsyncValue<String> url});
 }
 
 /// @nodoc
@@ -93,6 +101,7 @@ class __$$_TopInfoStateCopyWithImpl<$Res>
   $Res call({
     Object? topInfoItemList = null,
     Object? futureTopInfoItemList = null,
+    Object? url = null,
   }) {
     return _then(_$_TopInfoState(
       topInfoItemList: null == topInfoItemList
@@ -103,6 +112,10 @@ class __$$_TopInfoStateCopyWithImpl<$Res>
           ? _value.futureTopInfoItemList
           : futureTopInfoItemList // ignore: cast_nullable_to_non_nullable
               as AsyncValue<List<SampleModel>>,
+      url: null == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as AsyncValue<String>,
     ));
   }
 }
@@ -112,7 +125,8 @@ class __$$_TopInfoStateCopyWithImpl<$Res>
 class _$_TopInfoState implements _TopInfoState {
   const _$_TopInfoState(
       {final List<SampleModel> topInfoItemList = const <SampleModel>[],
-      this.futureTopInfoItemList = const AsyncValue.loading()})
+      this.futureTopInfoItemList = const AsyncValue.loading(),
+      this.url = const AsyncValue.loading()})
       : _topInfoItemList = topInfoItemList;
 
 // こちらの場合FutureBuilder等が必要
@@ -130,10 +144,14 @@ class _$_TopInfoState implements _TopInfoState {
   @override
   @JsonKey()
   final AsyncValue<List<SampleModel>> futureTopInfoItemList;
+// URLを取得
+  @override
+  @JsonKey()
+  final AsyncValue<String> url;
 
   @override
   String toString() {
-    return 'TopInfoState(topInfoItemList: $topInfoItemList, futureTopInfoItemList: $futureTopInfoItemList)';
+    return 'TopInfoState(topInfoItemList: $topInfoItemList, futureTopInfoItemList: $futureTopInfoItemList, url: $url)';
   }
 
   @override
@@ -144,14 +162,16 @@ class _$_TopInfoState implements _TopInfoState {
             const DeepCollectionEquality()
                 .equals(other._topInfoItemList, _topInfoItemList) &&
             (identical(other.futureTopInfoItemList, futureTopInfoItemList) ||
-                other.futureTopInfoItemList == futureTopInfoItemList));
+                other.futureTopInfoItemList == futureTopInfoItemList) &&
+            (identical(other.url, url) || other.url == url));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_topInfoItemList),
-      futureTopInfoItemList);
+      futureTopInfoItemList,
+      url);
 
   @JsonKey(ignore: true)
   @override
@@ -162,14 +182,16 @@ class _$_TopInfoState implements _TopInfoState {
 
 abstract class _TopInfoState implements TopInfoState {
   const factory _TopInfoState(
-          {final List<SampleModel> topInfoItemList,
-          final AsyncValue<List<SampleModel>> futureTopInfoItemList}) =
-      _$_TopInfoState;
+      {final List<SampleModel> topInfoItemList,
+      final AsyncValue<List<SampleModel>> futureTopInfoItemList,
+      final AsyncValue<String> url}) = _$_TopInfoState;
 
   @override // こちらの場合FutureBuilder等が必要
   List<SampleModel> get topInfoItemList;
   @override // こちらの場合、state.futureTopInfoList.when~が使える
   AsyncValue<List<SampleModel>> get futureTopInfoItemList;
+  @override // URLを取得
+  AsyncValue<String> get url;
   @override
   @JsonKey(ignore: true)
   _$$_TopInfoStateCopyWith<_$_TopInfoState> get copyWith =>

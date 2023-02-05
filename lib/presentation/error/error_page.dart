@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 class CommonErrorPage extends StatelessWidget {
   const CommonErrorPage({super.key});
 
+  static const String routeName = 'error';
+  static const String routePath = '/error';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

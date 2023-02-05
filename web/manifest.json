@@ -1,15 +1,20 @@
 {
-    "name": "Yoriai",
-    "description": "Yoriai",
-    "version": "1.0.0",
+    "name": "URL Picker",
+    "description": "URL Picker",
+    "version": "0.0.7",
+    "manifest_version": 3,
     "content_security_policy": {
         "extension_pages": "script-src 'self' ; object-src 'self'"
     },
     "action": {
         "default_popup": "index.html",
-        "default_icon": "/icons/Icon-192.png"
+        "default_icon": "/icons/chun.png"
     },
-    "manifest_version": 3,
+    "icons": {
+        "16": "/icons/chun.png",
+        "48": "/icons/chun.png",
+        "128": "/icons/chun.png"
+    },
     "permissions": [
         "tabs",
         "webNavigation",
@@ -17,5 +22,6 @@
         "storage",
         "contextMenus",
         "cookies"
-    ]
+    ],
+    "author": "Kurogoma939"
 }

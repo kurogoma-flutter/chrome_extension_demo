@@ -13,5 +13,7 @@ class TopInfoState with _$TopInfoState {
     // こちらの場合、state.futureTopInfoList.when~が使える
     @Default(AsyncValue.loading())
         AsyncValue<List<SampleModel>> futureTopInfoItemList,
+    // URLを取得
+    @Default(AsyncValue.loading()) AsyncValue<String> url,
   }) = _TopInfoState;
 }
