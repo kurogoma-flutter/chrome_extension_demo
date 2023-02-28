@@ -6,6 +6,7 @@ part 'info_card_item.freezed.dart';
 class InfoCardItem with _$InfoCardItem {
   const factory InfoCardItem({
     required String label,
+    required String imageUrl,
     required String url,
   }) = _InfoCardItem;
 }
