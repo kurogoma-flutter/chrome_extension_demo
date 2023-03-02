@@ -16,10 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$TopInfo {
-  String get companyName => throw _privateConstructorUsedError;
-  String get targetName => throw _privateConstructorUsedError;
-  List<InfoCardItem> get commonList => throw _privateConstructorUsedError;
-  List<InfoCardItem> get targetList => throw _privateConstructorUsedError;
+  InfoCardList get commonList => throw _privateConstructorUsedError;
+  InfoCardList get pathList => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TopInfoCopyWith<TopInfo> get copyWith => throw _privateConstructorUsedError;
@@ -30,11 +28,10 @@ abstract class $TopInfoCopyWith<$Res> {
   factory $TopInfoCopyWith(TopInfo value, $Res Function(TopInfo) then) =
       _$TopInfoCopyWithImpl<$Res, TopInfo>;
   @useResult
-  $Res call(
-      {String companyName,
-      String targetName,
-      List<InfoCardItem> commonList,
-      List<InfoCardItem> targetList});
+  $Res call({InfoCardList commonList, InfoCardList pathList});
+
+  $InfoCardListCopyWith<$Res> get commonList;
+  $InfoCardListCopyWith<$Res> get pathList;
 }
 
 /// @nodoc
@@ -50,29 +47,35 @@ class _$TopInfoCopyWithImpl<$Res, $Val extends TopInfo>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? companyName = null,
-    Object? targetName = null,
     Object? commonList = null,
-    Object? targetList = null,
+    Object? pathList = null,
   }) {
     return _then(_value.copyWith(
-      companyName: null == companyName
-          ? _value.companyName
-          : companyName // ignore: cast_nullable_to_non_nullable
-              as String,
-      targetName: null == targetName
-          ? _value.targetName
-          : targetName // ignore: cast_nullable_to_non_nullable
-              as String,
       commonList: null == commonList
           ? _value.commonList
           : commonList // ignore: cast_nullable_to_non_nullable
-              as List<InfoCardItem>,
-      targetList: null == targetList
-          ? _value.targetList
-          : targetList // ignore: cast_nullable_to_non_nullable
-              as List<InfoCardItem>,
+              as InfoCardList,
+      pathList: null == pathList
+          ? _value.pathList
+          : pathList // ignore: cast_nullable_to_non_nullable
+              as InfoCardList,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $InfoCardListCopyWith<$Res> get commonList {
+    return $InfoCardListCopyWith<$Res>(_value.commonList, (value) {
+      return _then(_value.copyWith(commonList: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $InfoCardListCopyWith<$Res> get pathList {
+    return $InfoCardListCopyWith<$Res>(_value.pathList, (value) {
+      return _then(_value.copyWith(pathList: value) as $Val);
+    });
   }
 }
 
@@ -83,11 +86,12 @@ abstract class _$$_TopInfoCopyWith<$Res> implements $TopInfoCopyWith<$Res> {
       __$$_TopInfoCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String companyName,
-      String targetName,
-      List<InfoCardItem> commonList,
-      List<InfoCardItem> targetList});
+  $Res call({InfoCardList commonList, InfoCardList pathList});
+
+  @override
+  $InfoCardListCopyWith<$Res> get commonList;
+  @override
+  $InfoCardListCopyWith<$Res> get pathList;
 }
 
 /// @nodoc
@@ -100,28 +104,18 @@ class __$$_TopInfoCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? companyName = null,
-    Object? targetName = null,
     Object? commonList = null,
-    Object? targetList = null,
+    Object? pathList = null,
   }) {
     return _then(_$_TopInfo(
-      companyName: null == companyName
-          ? _value.companyName
-          : companyName // ignore: cast_nullable_to_non_nullable
-              as String,
-      targetName: null == targetName
-          ? _value.targetName
-          : targetName // ignore: cast_nullable_to_non_nullable
-              as String,
       commonList: null == commonList
-          ? _value._commonList
+          ? _value.commonList
           : commonList // ignore: cast_nullable_to_non_nullable
-              as List<InfoCardItem>,
-      targetList: null == targetList
-          ? _value._targetList
-          : targetList // ignore: cast_nullable_to_non_nullable
-              as List<InfoCardItem>,
+              as InfoCardList,
+      pathList: null == pathList
+          ? _value.pathList
+          : pathList // ignore: cast_nullable_to_non_nullable
+              as InfoCardList,
     ));
   }
 }
@@ -129,39 +123,16 @@ class __$$_TopInfoCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_TopInfo implements _TopInfo {
-  const _$_TopInfo(
-      {this.companyName = '',
-      this.targetName = '',
-      required final List<InfoCardItem> commonList,
-      required final List<InfoCardItem> targetList})
-      : _commonList = commonList,
-        _targetList = targetList;
+  const _$_TopInfo({required this.commonList, required this.pathList});
 
   @override
-  @JsonKey()
-  final String companyName;
+  final InfoCardList commonList;
   @override
-  @JsonKey()
-  final String targetName;
-  final List<InfoCardItem> _commonList;
-  @override
-  List<InfoCardItem> get commonList {
-    if (_commonList is EqualUnmodifiableListView) return _commonList;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_commonList);
-  }
-
-  final List<InfoCardItem> _targetList;
-  @override
-  List<InfoCardItem> get targetList {
-    if (_targetList is EqualUnmodifiableListView) return _targetList;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_targetList);
-  }
+  final InfoCardList pathList;
 
   @override
   String toString() {
-    return 'TopInfo(companyName: $companyName, targetName: $targetName, commonList: $commonList, targetList: $targetList)';
+    return 'TopInfo(commonList: $commonList, pathList: $pathList)';
   }
 
   @override
@@ -169,23 +140,14 @@ class _$_TopInfo implements _TopInfo {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_TopInfo &&
-            (identical(other.companyName, companyName) ||
-                other.companyName == companyName) &&
-            (identical(other.targetName, targetName) ||
-                other.targetName == targetName) &&
-            const DeepCollectionEquality()
-                .equals(other._commonList, _commonList) &&
-            const DeepCollectionEquality()
-                .equals(other._targetList, _targetList));
+            (identical(other.commonList, commonList) ||
+                other.commonList == commonList) &&
+            (identical(other.pathList, pathList) ||
+                other.pathList == pathList));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      companyName,
-      targetName,
-      const DeepCollectionEquality().hash(_commonList),
-      const DeepCollectionEquality().hash(_targetList));
+  int get hashCode => Object.hash(runtimeType, commonList, pathList);
 
   @JsonKey(ignore: true)
   @override
@@ -196,19 +158,13 @@ class _$_TopInfo implements _TopInfo {
 
 abstract class _TopInfo implements TopInfo {
   const factory _TopInfo(
-      {final String companyName,
-      final String targetName,
-      required final List<InfoCardItem> commonList,
-      required final List<InfoCardItem> targetList}) = _$_TopInfo;
+      {required final InfoCardList commonList,
+      required final InfoCardList pathList}) = _$_TopInfo;
 
   @override
-  String get companyName;
+  InfoCardList get commonList;
   @override
-  String get targetName;
-  @override
-  List<InfoCardItem> get commonList;
-  @override
-  List<InfoCardItem> get targetList;
+  InfoCardList get pathList;
   @override
   @JsonKey(ignore: true)
   _$$_TopInfoCopyWith<_$_TopInfo> get copyWith =>
