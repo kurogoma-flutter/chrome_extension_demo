@@ -1,6 +1,6 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../infrastructure/model/sample/sample_model.dart';
+import '../../infrastructure/model/top_info/top_info.dart';
 import '../../infrastructure/repository/top_info/top_info_repository.dart';
 
 final topInfoService = Provider.autoDispose(
@@ -16,7 +16,11 @@ class TopInfoService {
 
   final TopInfoRepository topInfoRepository;
 
-  Future<List<SampleModel>> fetchTopCardInfoList() async {
-    return topInfoRepository.fetchTopCardInfoList(domain: 'https://google.com');
+  Future<HostItem?> fetchTopInfo(String hostUrl) async {
+    return topInfoRepository.fetchTopInfo(hostUrl);
+  }
+
+  Future<PathItem?> fetchPathInfo(String hostUrl, String pathUrl) async {
+    return topInfoRepository.fetchPathInfo(hostUrl, pathUrl);
   }
 }

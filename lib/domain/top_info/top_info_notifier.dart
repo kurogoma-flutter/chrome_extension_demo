@@ -8,7 +8,7 @@ final topInfoNotifierProvider =
     StateNotifierProvider.autoDispose<TopInfoNotifier, TopInfoState>((ref) {
   return TopInfoNotifier(
     topInfoService: ref.read(topInfoService),
-  )..init();
+  );
 });
 
 class TopInfoNotifier extends StateNotifier<TopInfoState> {
@@ -18,33 +18,30 @@ class TopInfoNotifier extends StateNotifier<TopInfoState> {
 
   final TopInfoService topInfoService;
 
-  Future<void> init() async {
-    // データ取得
-    final sampleList = await topInfoService.fetchTopCardInfoList();
-
-    // 通常のFutureのデータ更新
-    state = state.copyWith(
-      topInfoItemList: sampleList,
-    );
-
-    // AsyncValueのデータ更新
-    state = state.copyWith(
-      futureTopInfoItemList: AsyncValue.data(sampleList),
-    );
-  }
-
-  Future<void> fetchUrl() async {
+  Future<Uri> fetchUrl() async {
     // URLを取得
     final url = await fetchCurrentPathFuture;
+    return Uri.parse(url);
+  }
 
-    final uriInfo = Uri.parse(url);
-
-    final resultUrl =
-        'URL: ${uriInfo.origin}\nHOST: ${uriInfo.host}\nPATH: ${uriInfo.path}\nQUERY: ${uriInfo.query}\nFRAGMENT: ${uriInfo.fragment}\nUserInfo: ${uriInfo.userInfo}\nPORT: ${uriInfo.port}\nPROTOCOL: ${uriInfo.authority} \nAUTHORITY: ${uriInfo.authority}\nDATA: ${uriInfo.data}';
-
-    // AsyncValueのデータ更新
+  Future<void> fetchTopInfo() async {
+    // URLを取得
+    final url = await fetchUrl();
+    // URLからホストを取得
+    final host = url.host;
+    // ホストからTopInfoを取得
+    final hostItem = await topInfoService.fetchTopInfo(host);
+    // TopInfoをStateにセット
     state = state.copyWith(
-      url: AsyncValue.data(resultUrl),
+      hostItem: AsyncValue.data(hostItem),
+    );
+    // パスを取得
+    final path = url.path;
+    // パスからPathInfoを取得
+    final pathItem = await topInfoService.fetchPathInfo(host, path);
+    // PathInfoをStateにセット
+    state = state.copyWith(
+      pathItem: AsyncValue.data(pathItem),
     );
   }
 }

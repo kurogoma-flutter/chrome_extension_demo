@@ -1,6 +1,3 @@
-import 'package:chrome_extension_demo/infrastructure/data_source/demo_data_list/demo_data_list.dart';
-import 'package:chrome_extension_demo/infrastructure/model/info_card_item/info_card_item.dart';
-
 import '../../model/sample/sample_model.dart';
 
 class SampleDataSource {
@@ -30,28 +27,4 @@ class SampleDataSource {
       ),
     ];
   }
-}
-
-enum BaseCustomerData {
-  yoriai(
-    'https://holo-x.jp',
-    yoriaiItemList,
-  ),
-  holox(
-    'https://yoriai.space',
-    holoxItemList,
-  ),
-  google(
-    'https://google.com',
-    googleItemList,
-  ),
-  ;
-
-  const BaseCustomerData(
-    this.domain,
-    this.itemList,
-  );
-
-  final String domain;
-  final List<InfoCardItem> itemList;
 }

@@ -16,12 +16,10 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$TopInfoState {
-// こちらの場合FutureBuilder等が必要
-  List<SampleModel> get topInfoItemList =>
-      throw _privateConstructorUsedError; // こちらの場合、state.futureTopInfoList.when~が使える
-  AsyncValue<List<SampleModel>> get futureTopInfoItemList =>
-      throw _privateConstructorUsedError; // URLを取得
-  AsyncValue<String> get url => throw _privateConstructorUsedError;
+// HomeItem
+  AsyncValue<HostItem?> get hostItem =>
+      throw _privateConstructorUsedError; // PathItem
+  AsyncValue<PathItem?> get pathItem => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TopInfoStateCopyWith<TopInfoState> get copyWith =>
@@ -34,10 +32,7 @@ abstract class $TopInfoStateCopyWith<$Res> {
           TopInfoState value, $Res Function(TopInfoState) then) =
       _$TopInfoStateCopyWithImpl<$Res, TopInfoState>;
   @useResult
-  $Res call(
-      {List<SampleModel> topInfoItemList,
-      AsyncValue<List<SampleModel>> futureTopInfoItemList,
-      AsyncValue<String> url});
+  $Res call({AsyncValue<HostItem?> hostItem, AsyncValue<PathItem?> pathItem});
 }
 
 /// @nodoc
@@ -53,23 +48,18 @@ class _$TopInfoStateCopyWithImpl<$Res, $Val extends TopInfoState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? topInfoItemList = null,
-    Object? futureTopInfoItemList = null,
-    Object? url = null,
+    Object? hostItem = null,
+    Object? pathItem = null,
   }) {
     return _then(_value.copyWith(
-      topInfoItemList: null == topInfoItemList
-          ? _value.topInfoItemList
-          : topInfoItemList // ignore: cast_nullable_to_non_nullable
-              as List<SampleModel>,
-      futureTopInfoItemList: null == futureTopInfoItemList
-          ? _value.futureTopInfoItemList
-          : futureTopInfoItemList // ignore: cast_nullable_to_non_nullable
-              as AsyncValue<List<SampleModel>>,
-      url: null == url
-          ? _value.url
-          : url // ignore: cast_nullable_to_non_nullable
-              as AsyncValue<String>,
+      hostItem: null == hostItem
+          ? _value.hostItem
+          : hostItem // ignore: cast_nullable_to_non_nullable
+              as AsyncValue<HostItem?>,
+      pathItem: null == pathItem
+          ? _value.pathItem
+          : pathItem // ignore: cast_nullable_to_non_nullable
+              as AsyncValue<PathItem?>,
     ) as $Val);
   }
 }
@@ -82,10 +72,7 @@ abstract class _$$_TopInfoStateCopyWith<$Res>
       __$$_TopInfoStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {List<SampleModel> topInfoItemList,
-      AsyncValue<List<SampleModel>> futureTopInfoItemList,
-      AsyncValue<String> url});
+  $Res call({AsyncValue<HostItem?> hostItem, AsyncValue<PathItem?> pathItem});
 }
 
 /// @nodoc
@@ -99,23 +86,18 @@ class __$$_TopInfoStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? topInfoItemList = null,
-    Object? futureTopInfoItemList = null,
-    Object? url = null,
+    Object? hostItem = null,
+    Object? pathItem = null,
   }) {
     return _then(_$_TopInfoState(
-      topInfoItemList: null == topInfoItemList
-          ? _value._topInfoItemList
-          : topInfoItemList // ignore: cast_nullable_to_non_nullable
-              as List<SampleModel>,
-      futureTopInfoItemList: null == futureTopInfoItemList
-          ? _value.futureTopInfoItemList
-          : futureTopInfoItemList // ignore: cast_nullable_to_non_nullable
-              as AsyncValue<List<SampleModel>>,
-      url: null == url
-          ? _value.url
-          : url // ignore: cast_nullable_to_non_nullable
-              as AsyncValue<String>,
+      hostItem: null == hostItem
+          ? _value.hostItem
+          : hostItem // ignore: cast_nullable_to_non_nullable
+              as AsyncValue<HostItem?>,
+      pathItem: null == pathItem
+          ? _value.pathItem
+          : pathItem // ignore: cast_nullable_to_non_nullable
+              as AsyncValue<PathItem?>,
     ));
   }
 }
@@ -124,34 +106,21 @@ class __$$_TopInfoStateCopyWithImpl<$Res>
 
 class _$_TopInfoState implements _TopInfoState {
   const _$_TopInfoState(
-      {final List<SampleModel> topInfoItemList = const <SampleModel>[],
-      this.futureTopInfoItemList = const AsyncValue.loading(),
-      this.url = const AsyncValue.loading()})
-      : _topInfoItemList = topInfoItemList;
+      {this.hostItem = const AsyncValue.loading(),
+      this.pathItem = const AsyncValue.loading()});
 
-// こちらの場合FutureBuilder等が必要
-  final List<SampleModel> _topInfoItemList;
-// こちらの場合FutureBuilder等が必要
+// HomeItem
   @override
   @JsonKey()
-  List<SampleModel> get topInfoItemList {
-    if (_topInfoItemList is EqualUnmodifiableListView) return _topInfoItemList;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_topInfoItemList);
-  }
-
-// こちらの場合、state.futureTopInfoList.when~が使える
+  final AsyncValue<HostItem?> hostItem;
+// PathItem
   @override
   @JsonKey()
-  final AsyncValue<List<SampleModel>> futureTopInfoItemList;
-// URLを取得
-  @override
-  @JsonKey()
-  final AsyncValue<String> url;
+  final AsyncValue<PathItem?> pathItem;
 
   @override
   String toString() {
-    return 'TopInfoState(topInfoItemList: $topInfoItemList, futureTopInfoItemList: $futureTopInfoItemList, url: $url)';
+    return 'TopInfoState(hostItem: $hostItem, pathItem: $pathItem)';
   }
 
   @override
@@ -159,19 +128,14 @@ class _$_TopInfoState implements _TopInfoState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_TopInfoState &&
-            const DeepCollectionEquality()
-                .equals(other._topInfoItemList, _topInfoItemList) &&
-            (identical(other.futureTopInfoItemList, futureTopInfoItemList) ||
-                other.futureTopInfoItemList == futureTopInfoItemList) &&
-            (identical(other.url, url) || other.url == url));
+            (identical(other.hostItem, hostItem) ||
+                other.hostItem == hostItem) &&
+            (identical(other.pathItem, pathItem) ||
+                other.pathItem == pathItem));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_topInfoItemList),
-      futureTopInfoItemList,
-      url);
+  int get hashCode => Object.hash(runtimeType, hostItem, pathItem);
 
   @JsonKey(ignore: true)
   @override
@@ -182,16 +146,13 @@ class _$_TopInfoState implements _TopInfoState {
 
 abstract class _TopInfoState implements TopInfoState {
   const factory _TopInfoState(
-      {final List<SampleModel> topInfoItemList,
-      final AsyncValue<List<SampleModel>> futureTopInfoItemList,
-      final AsyncValue<String> url}) = _$_TopInfoState;
+      {final AsyncValue<HostItem?> hostItem,
+      final AsyncValue<PathItem?> pathItem}) = _$_TopInfoState;
 
-  @override // こちらの場合FutureBuilder等が必要
-  List<SampleModel> get topInfoItemList;
-  @override // こちらの場合、state.futureTopInfoList.when~が使える
-  AsyncValue<List<SampleModel>> get futureTopInfoItemList;
-  @override // URLを取得
-  AsyncValue<String> get url;
+  @override // HomeItem
+  AsyncValue<HostItem?> get hostItem;
+  @override // PathItem
+  AsyncValue<PathItem?> get pathItem;
   @override
   @JsonKey(ignore: true)
   _$$_TopInfoStateCopyWith<_$_TopInfoState> get copyWith =>
