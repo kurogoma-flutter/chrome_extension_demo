@@ -18,7 +18,7 @@ const List<HostItem> demoDataList = [
       InfoCardItem(
         label: 'news',
         imageUrl: 'sample',
-        linkUrl: 'https://holo-x.jp',
+        linkUrl: 'https://holo-x.jp/news',
       ),
     ],
     itemList: [
@@ -27,17 +27,17 @@ const List<HostItem> demoDataList = [
         urlPath: '/company',
         itemList: [
           InfoCardItem(
-            label: 'item1',
+            label: 'company1',
             imageUrl: 'company',
             linkUrl: 'https://holo-x.jp/company',
           ),
           InfoCardItem(
-            label: 'item2',
+            label: 'company2',
             imageUrl: 'company',
             linkUrl: 'https://holo-x.jp/company',
           ),
           InfoCardItem(
-            label: 'item3',
+            label: 'company3',
             imageUrl: 'company',
             linkUrl: 'https://holo-x.jp/company',
           ),
@@ -48,17 +48,17 @@ const List<HostItem> demoDataList = [
         urlPath: '/service',
         itemList: [
           InfoCardItem(
-            label: 'item1',
+            label: 'service1',
             imageUrl: 'service',
             linkUrl: 'https://yoriai.biz/',
           ),
           InfoCardItem(
-            label: 'item2',
+            label: 'service2',
             imageUrl: 'service',
             linkUrl: 'https://yoriai.media/',
           ),
           InfoCardItem(
-            label: 'item3',
+            label: 'service3',
             imageUrl: 'service',
             linkUrl: 'https://success-plus.jp/',
           ),
@@ -69,17 +69,17 @@ const List<HostItem> demoDataList = [
         urlPath: '/news',
         itemList: [
           InfoCardItem(
-            label: 'item1',
+            label: 'news1',
             imageUrl: 'news',
             linkUrl: 'https://holo-x.jp/posts/zluOgb2Y',
           ),
           InfoCardItem(
-            label: 'item2',
+            label: 'news2',
             imageUrl: 'news',
             linkUrl: 'https://holo-x.jp/posts/JWkIZuzi',
           ),
           InfoCardItem(
-            label: 'item3',
+            label: 'news3',
             imageUrl: 'news',
             linkUrl: 'https://holo-x.jp/posts/B0PzJmOV',
           ),

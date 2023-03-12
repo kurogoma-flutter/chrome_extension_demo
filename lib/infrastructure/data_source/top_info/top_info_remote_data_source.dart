@@ -12,10 +12,10 @@ class TopInfoDataSource {
 
   /// [demoDataList]から[urlHost]に一致する[HomeItem]の[urlPath]に一致する[PathItem]を返す
   Future<PathItem?> fetchPathInfo(String urlHost, String urlPath) async {
-    final hostItem =
-        demoDataList.firstWhereOrNull((element) => element.urlHost == urlHost);
+    final hostItem = demoDataList
+        .firstWhereOrNull((element) => element.urlHost.contains(urlHost));
 
     return hostItem?.itemList
-        .firstWhereOrNull((element) => element.urlPath == urlPath);
+        .firstWhereOrNull((element) => element.urlPath.contains(urlPath));
   }
 }

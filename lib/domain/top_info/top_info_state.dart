@@ -12,5 +12,7 @@ class TopInfoState with _$TopInfoState {
     @Default(AsyncValue.loading()) AsyncValue<HostItem?> hostItem,
     // PathItem
     @Default(AsyncValue.loading()) AsyncValue<PathItem?> pathItem,
+    // URL result
+    @Default('') String urlResult,
   }) = _TopInfoState;
 }

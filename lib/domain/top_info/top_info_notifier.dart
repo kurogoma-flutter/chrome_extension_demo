@@ -26,9 +26,13 @@ class TopInfoNotifier extends StateNotifier<TopInfoState> {
 
   Future<void> fetchTopInfo() async {
     // URLを取得
-    final url = await fetchUrl();
+    final uriInfo = await fetchUrl();
+    state = state.copyWith(
+      urlResult:
+          'URL: ${uriInfo.origin} / HOST: ${uriInfo.host} / PATH: ${uriInfo.path} / QUERY: ${uriInfo.query} / FRAGMENT: ${uriInfo.fragment} / UserInfo: ${uriInfo.userInfo} / PORT: ${uriInfo.port} / PROTOCOL: ${uriInfo.authority}  / AUTHORITY: ${uriInfo.authority} / DATA: ${uriInfo.data}',
+    );
     // URLからホストを取得
-    final host = url.host;
+    final host = uriInfo.host;
     // ホストからTopInfoを取得
     final hostItem = await topInfoService.fetchTopInfo(host);
     // TopInfoをStateにセット
@@ -36,7 +40,7 @@ class TopInfoNotifier extends StateNotifier<TopInfoState> {
       hostItem: AsyncValue.data(hostItem),
     );
     // パスを取得
-    final path = url.path;
+    final path = uriInfo.path;
     // パスからPathInfoを取得
     final pathItem = await topInfoService.fetchPathInfo(host, path);
     // PathInfoをStateにセット

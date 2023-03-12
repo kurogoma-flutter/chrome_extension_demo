@@ -19,7 +19,9 @@ mixin _$TopInfoState {
 // HomeItem
   AsyncValue<HostItem?> get hostItem =>
       throw _privateConstructorUsedError; // PathItem
-  AsyncValue<PathItem?> get pathItem => throw _privateConstructorUsedError;
+  AsyncValue<PathItem?> get pathItem =>
+      throw _privateConstructorUsedError; // URL result
+  String get urlResult => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TopInfoStateCopyWith<TopInfoState> get copyWith =>
@@ -32,7 +34,10 @@ abstract class $TopInfoStateCopyWith<$Res> {
           TopInfoState value, $Res Function(TopInfoState) then) =
       _$TopInfoStateCopyWithImpl<$Res, TopInfoState>;
   @useResult
-  $Res call({AsyncValue<HostItem?> hostItem, AsyncValue<PathItem?> pathItem});
+  $Res call(
+      {AsyncValue<HostItem?> hostItem,
+      AsyncValue<PathItem?> pathItem,
+      String urlResult});
 }
 
 /// @nodoc
@@ -50,6 +55,7 @@ class _$TopInfoStateCopyWithImpl<$Res, $Val extends TopInfoState>
   $Res call({
     Object? hostItem = null,
     Object? pathItem = null,
+    Object? urlResult = null,
   }) {
     return _then(_value.copyWith(
       hostItem: null == hostItem
@@ -60,6 +66,10 @@ class _$TopInfoStateCopyWithImpl<$Res, $Val extends TopInfoState>
           ? _value.pathItem
           : pathItem // ignore: cast_nullable_to_non_nullable
               as AsyncValue<PathItem?>,
+      urlResult: null == urlResult
+          ? _value.urlResult
+          : urlResult // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -72,7 +82,10 @@ abstract class _$$_TopInfoStateCopyWith<$Res>
       __$$_TopInfoStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({AsyncValue<HostItem?> hostItem, AsyncValue<PathItem?> pathItem});
+  $Res call(
+      {AsyncValue<HostItem?> hostItem,
+      AsyncValue<PathItem?> pathItem,
+      String urlResult});
 }
 
 /// @nodoc
@@ -88,6 +101,7 @@ class __$$_TopInfoStateCopyWithImpl<$Res>
   $Res call({
     Object? hostItem = null,
     Object? pathItem = null,
+    Object? urlResult = null,
   }) {
     return _then(_$_TopInfoState(
       hostItem: null == hostItem
@@ -98,6 +112,10 @@ class __$$_TopInfoStateCopyWithImpl<$Res>
           ? _value.pathItem
           : pathItem // ignore: cast_nullable_to_non_nullable
               as AsyncValue<PathItem?>,
+      urlResult: null == urlResult
+          ? _value.urlResult
+          : urlResult // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -107,7 +125,8 @@ class __$$_TopInfoStateCopyWithImpl<$Res>
 class _$_TopInfoState implements _TopInfoState {
   const _$_TopInfoState(
       {this.hostItem = const AsyncValue.loading(),
-      this.pathItem = const AsyncValue.loading()});
+      this.pathItem = const AsyncValue.loading(),
+      this.urlResult = ''});
 
 // HomeItem
   @override
@@ -117,10 +136,14 @@ class _$_TopInfoState implements _TopInfoState {
   @override
   @JsonKey()
   final AsyncValue<PathItem?> pathItem;
+// URL result
+  @override
+  @JsonKey()
+  final String urlResult;
 
   @override
   String toString() {
-    return 'TopInfoState(hostItem: $hostItem, pathItem: $pathItem)';
+    return 'TopInfoState(hostItem: $hostItem, pathItem: $pathItem, urlResult: $urlResult)';
   }
 
   @override
@@ -131,11 +154,13 @@ class _$_TopInfoState implements _TopInfoState {
             (identical(other.hostItem, hostItem) ||
                 other.hostItem == hostItem) &&
             (identical(other.pathItem, pathItem) ||
-                other.pathItem == pathItem));
+                other.pathItem == pathItem) &&
+            (identical(other.urlResult, urlResult) ||
+                other.urlResult == urlResult));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, hostItem, pathItem);
+  int get hashCode => Object.hash(runtimeType, hostItem, pathItem, urlResult);
 
   @JsonKey(ignore: true)
   @override
@@ -147,12 +172,15 @@ class _$_TopInfoState implements _TopInfoState {
 abstract class _TopInfoState implements TopInfoState {
   const factory _TopInfoState(
       {final AsyncValue<HostItem?> hostItem,
-      final AsyncValue<PathItem?> pathItem}) = _$_TopInfoState;
+      final AsyncValue<PathItem?> pathItem,
+      final String urlResult}) = _$_TopInfoState;
 
   @override // HomeItem
   AsyncValue<HostItem?> get hostItem;
   @override // PathItem
   AsyncValue<PathItem?> get pathItem;
+  @override // URL result
+  String get urlResult;
   @override
   @JsonKey(ignore: true)
   _$$_TopInfoStateCopyWith<_$_TopInfoState> get copyWith =>
